@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="jquery.min.js"></script>
+    <script src="../jquery/jquery.min.js"></script>
     <script>
-    $(document).ready(function(){
-    	
-    });
+//url: "../../EmpServlet" type:"get" 은
+//xhtp.onreadystatechange = function(){this.responseText; = function(result)} 
+//xhtp.open("get", "../../EmpServlet");
+//xhtp.send(); 와 같음
+//success: function (result)와
+//if(this.readyState==4&&this.status==200) 여기서 this는 xhtp
+
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "../../EmpServlet",
+                type: "get",
+                success: function (result) { //success: function이 제대로 실행됐을 때 실행할 내용
+
+                    var datas = JSON.parse(result); //연결한 데이터를 자바스크립트 오브젝트(배열)로 변환하여 datas에 
+                    console.log(datas);
+                    var ul = $("<ul>");
+                    for (var i = 0; i < datas.length; i++) {
+                        ul.append($("<li>").text(datas[i].firstName)); //datas에 담긴 데이터를 번호 돌려서 찾겠다
+
+                    }
+
+                    $("#show").append(ul); //.html(ul)도 가능함
+                }
+            });
+        });
     </script>
 </head>
+
 <body>
-    
+    <p id="show"></p>
+
 </body>
+
 </html>
