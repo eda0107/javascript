@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body id="body">
+    <!--공백도 childNodes를 사용할 때 textNode로 배열 안에 들어감!!-->
+    <h1 id="id01">My page</h1>
+    <h2 id="second">Second Page</h2>
+    Third Page
+    <div id="div">
+        <h1 id="h1">My page(1)</h1>
+        <h2 id="h2">Second Page(1)</h2>
+    </div>
+    <p style="color: red" id="id02"></p>
+    <p style="color: blue" id="id03"></p>
+    <script>
+       console.log(this);
+    // document.getElementById("id02").innerHTML = document.getElementById("id01").innerHTML //id01의 텍스트 노드가 id02의 텍스트 영역으로 들어감
+    document.getElementById("id02").innerHTML = 
+                                    document.getElementById("id01").firstChild.nodeValue;
+                                    //body태그 기준으로 firstChild는 h1>My page
+                                    //값을 가져올 때 nodeValue 사용
+    //body태그 안에서는 childNodes가 h1, p, script -> 배열 안에 담아서 childNodes의 첫번째 인덱스 값은 h1>My page
+    //firstChild, lastChild는 있지만 중간에 있는 노드들은 데리고 올 수 없기 때문에 배열의 인덱스 값을 호출하는 것
+    //감싸고 있는 건 다 부모
+    document.getElementById("id02").innerHTML = 
+                                    document.getElementById("id01").childNodes[0].nodeValue;
+
+    document.getElementById("id03").innerHTML = 
+                                    //  document.getElementById("body").childNodes[3].childNodes[0].nodeValue;
+                                    //body에서 세번째 인덱스 값이 second(id), textNod값은 id second의 0번째 자리
+    
+    // document.getElementById("body").childNodes[4].nodeValue;
+    document.getElementById("h1").parentNode.parentNode.childNodes[3].childNodes[0].nodeValue;
+    //자식 노드는 여러 개 있을 수 있지만 부모 노드는 하나만 있음
+    document.getElementById("h1").parentNode.previousSibling.nodeValue;
+    //previousSibling 현재 기준 앞의 노트 => Third page 텍스트를 가르킴
+    //nextSibling 현재 기준 뒤의 노트=>
+
+
+                                    
+
+    </script>
+</body>
+</html>

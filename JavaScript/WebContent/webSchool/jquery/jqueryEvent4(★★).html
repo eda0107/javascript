@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+
+</head>
+
+<!-- <table>
+    <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>전화번호</th>
+    </tr>
+</table> -->
+
+<body>
+    <button>CreateTable</button>
+    <script>
+        $("button").on("click", function () {
+            $("body table").remove(); //하나만 만들어지게 하려고
+            var tal = $("<table>");
+            tal.attr({ "id": "tbl", "border": "1" });
+            // tal.attr("caption", "주소록");
+            // tal.attr("border", "1");
+
+            var tr = $("<tr>").attr("align", "center");
+            tal.append(tr);
+
+            var th1 = $("<th>").text("이름");
+            var th2 = $("<th>").text("나이")
+            var th3 = $("<th>").text("전화번호");
+            var th4 = $("<th>").text("삭제");
+            tr.append(th1, th2, th3, th4);
+
+            var tr1 = $("<tr>");
+            tal.append(tr1);
+            var td1 = $("<td>").text("니노");
+            var td2 = $("<td>").text("37")
+            var td3 = $("<td>").text("81-80-8551-4132");
+            var btn = $("<button>").text("del");
+            var td7 = $("<td>").html(btn.click(delFunc));
+            tr1.append(td1, td2, td3, td7);
+
+            // var tr1 = $("<tr>");
+            // tr1.append(td1, td2, td3);
+
+            var tr2 = $("<tr>");
+            tal.append(tr2);
+            var td4 = $("<td>").text("오노");
+            var td5 = $("<td>").text("39")
+            var td6 = $("<td>").text("81-70-1125-4131");
+            btn = $("<button>").text("del");
+            var td8 = $("<td>").html(btn.click(delFunc));
+            tr2.append(td4, td5, td6, td8);
+     
+            $("body").append(tal);
+        })
+
+        function delFunc() {
+            $(this).parent().parent().remove(); //button태그의 부모(td)의 부모(tr)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#oldBtn").click(function () {
+                newBtn();
+            })
+            // $("#newBtn").click(function(){ //먹지 않음 oldBtn이 실행되야 newBtn이 실행되기 때문
+            //     alert("new btn clicked");
+            // })
+
+            $("body").on("click", "#newBtn", function () { // newBtn은 body 안에 만들어졌기 때문에 $("body") 상위 이벤트 선택자를
+                //선택하여.on(실행되야 할 요소, function(){실행되야 할 내용})
+                alert("new btn clicked");
+            })
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <p id="show"></p>
+    <button id="oldBtn">oldBtn</button>
+    <input type="text" name="firstName" value="Scott">
+    <button id="exist">ExistBtn</button>
+    <div id="upper">
+        <p>paragraph1</p>
+        <p>paragraph2</p>
+    </div>
+
+    <script>
+        function newBtn() {
+            var newBtn = $("<button>").text("newBtn"); //<태그> 태그를 만들겠다는 뜻(찾아오겠다는 것 X) .text(버튼안에 text->버튼 이름)
+            //
+            newBtn.attr("id", "newBtn"); //id 값을 newBtn으로 //attr를 사용하여 id값을 추가하겠다
+            var div = $("<div>").html("<h3>hello</h3>") //<>표시로 태그를 만들고 html태그를 통해 <h3></h3>를 div안에 넣겠다
+            //html("<h3>hello</h3>") == html($("<h3>").text("hello"))랑 같은 말
+            $("body").append(div);
+            $("body").append(newBtn);
+            //$("body").prepend(newBtn); oldbutton보다 newbutton이 위로 옴(맨 앞에 붙여줌)
+            console.log($("input[name]").val()); //매개값이 없으면 값을 가져오고 
+            $("input[name]").val("Charlie"); //매개값을 넣으면 기존 매개값에서 넣어준 값으로 바꿔줌
+
+            console.log(newBtn.attr("id"));
+
+            //text() <p></p>태그 안의 text 값을 가지고 오는 것
+            //text("~~~") <p></p>태그 안의 text에 새 값을 넣겠다
+            //html()
+            //val() 매개값을 넣고 뺄 때
+            //attr("id") 값을 읽어올 때 어떤 속성을 가져오고 싶은지 쓰면 됨
+            //prop("")
+
+            //remove() 요소 자체를 제거
+            $("#exist").remove(); 
+            //empty() 하위 요소를 제거
+            $("#upper").empty();
+        }
+
+
+    </script>
+
+</body>
+
+</html>

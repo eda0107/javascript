@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div onmouseover="mOver(this)" onmouseout="mOut(this)" //여기서 this는 div
+        style="background-color: peachpuff; width: 120px; height: 20px; padding: 40px;">MouseOver</div>
+    <br>
+    <div onmousedown="mDown(this)" onmouseup="mUp(this)"
+        style="background-color: peachpuff; width: 120px; height: 20px; padding: 40px;">Click</div>
+    <br>
+    <!-- <input type="text" id="fName"> -->
+    <br>
+    Name: <input onfocus="onFocus()" type="text" id="fName" onfocus="onFocus(this)" onblur="onBlur(this)">
+    <br>
+    
+
+    <script>
+         function onBlur(event) {
+            var elem = document.getElementById('fName');
+            elem.style.background = "purple";
+            // event.style.backgroundColor = "purple";
+            
+        }
+        function onFocus(event) {
+            var elem = document.getElementById('fName');
+            elem.style.background = "pink";
+            // event.style.backgroundColor = "pink";
+            
+        }
+         function mDown(event) {
+            event.style.backgroundColor = "yellow";
+            event.innerHTML = "Hello";
+        }
+        function mUp(event) {
+            event.style.backgroundColor = "red";
+            event.innerHTML = "Bye";
+        }
+        function mOver(event) {
+            console.log(event);
+            event.innerHTML = "Thank you";
+        }
+        function mOut(event) {
+            console.log(event)
+            event.innerHTML = "MouseOver";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    var obj = {name:"John", age: 30, city: "Seoul" } //자바스크립트의 오브젝트
+    var json = JSON.stringify(obj); //문자열 (stringify)
+    console.log(json);
+    var obj2 = JSON.parse(json); //parse함수를 통해 문자열을 자바스크립트의 오브젝트로 변환 (parse)
+    console.log(obj2.name, obj2.age, obj2.city);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var len = 16;
+        console.log(typeof len); //print 기능이 아니라 웹 상에서 console 탭에 표시되게 함
+        len = "sixteen";
+        console.log(typeof len);
+        lem = (16 > 15);
+        console.log(typeof len);
+        len = null;
+        console.log(typeof len);
+        console.log(typeof leng); //없는 자료형을 쓰면 console에 undefined로 표시됨
+
+        var cars = ["k5", "sonata", "sm5", "k3", "granduer", "carnival", "martiz"];
+        console.log(cars[0]); //cars의 0번째 인덱스
+        cars[0] = "k6";
+        console.log(cars[0]);
+
+        var person = {
+            firstName: "dayeon",
+            lastName: "lee",
+            age: 25,
+            fullName: function () { return this.firstName + "-" + this.lastName } //이름이 같아도 인식 못할까봐 this.메소드 사용
+        }
+
+        console.log(person.firstName); //()가 없으면 정의문만 리턴을 해줌
+        console.log(person["lastName"]);
+        console.log(person.fullName()); //()가 있으면 func이 실행되게끔
+    
+
+
+
+    </script>
+
+
+</body>
+
+</html>

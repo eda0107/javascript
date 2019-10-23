@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {  //선택자를 쓰려면 괄호를 열어야 함 //제이쿼리를 사용한다는 의미? $~
+            var val1 = $("div > h1").eq(1).html();
+            // console.log(val1);
+            // $("#tit").html(); -> h1 id 값을 가지고 옴 
+            // $(".tit").eq(1).html(); -> h1 class=tit 중 두 번째 값을 가지고 옴
+            // $("div h1").eq(0).html(); -> div 태그 밑의 첫 번째 h1 자식을 가지고 옴
+            // div 태그에서 공란을 사용하면 태그 중 아무거나 가지고 오겠다 (자식, 자손 상관없이)
+            // div 태그에서 꺽쇠를 사용하면 자식태그 
+            //div h1.eq(1)을 사용하면 요소값 2가 나오고 div > h1.eq(1)을 사용하면 요소값 3이 나옴
+            var val2 = $("#divs").children().eq(2).html();
+            //children 메소드를 통해 가지고 옴
+            //$("div").children().eq(0)->요소값 
+            //$("div").children().eq(1)-><h1>요소값</h1>
+            //$("div").children().eq(2)->요소값3
+            // console.log(val2);
+            var val3 = $("#spn").nextUntil("#h5");
+            //prev() span 태그를 기준으로  형 값 가지고 옴->요소값
+            //next() 동생 값 가지고 옴->요소값3
+            //nextAll() span 태그를 기준으로 모든 동생들 값을 가지고 옴
+             //nextUntil() id값 h5까지 가지고 오겠다 (선택자 본인은 제외)
+            console.log(val3);
+            //클래스 이름으로 가져올 때는 .클래스 이름
+            //id 이름으로 가져올 때는 #id 이름
+           
+        });
+    </script>
+
+</head>
+
+<body>
+    <h1>제이쿼리</h1>
+    <h1 id="tit">아이디 값</h1>
+    <h1 class="tit">클래스 값1</h1>
+    <h1 class="tit">클래스 값2</h1>
+    <div id="divs">
+        <h1>요소값</h1> <!--div 태그의 자식-->
+        <span id="spn">
+            <h1>요소값2</h1>  <!--div 태그의자손-->
+        </span>
+        <h1>요소값3</h1>
+        <h1>요소값4</h1>
+        <h1 id="h5">요소값5</h1>
+        <h1>요소값6</h1>
+    </div>
+
+</body>
+
+</html>

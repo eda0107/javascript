@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="cal"></div>
+    <script>
+
+
+        //     console.log(Date());
+        //     console.log("=============")
+        //     var l = new Date(2019, 0, 5); //2019년 1월 5일 : 월은 0을 적어야 1월이 들어감 일자에 0을 넣으면 전달 마지막 날(31일 or 30일)
+        //     var d = new Date(2019, 10, 0); //10월달의 마지막 날짜를 뜻함
+
+        //     console.log(Date());
+        //     console.log(d.getFullYear() + "년" + (d.getMonth() + 1) + "월" + d.getDate() + "일" + d.getDay() + "요일");
+
+        //     var tag = "<table border=1>";
+        //     tag += "<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>";
+        //     for (var i = 1; i <= monthDate; i++) {
+        //         if (i % 7 == 1) {
+        //             tag += "<tr>";
+        //             tag += "<td><font color='red'>" + i + "</td>";
+        //             continue;
+        //         } else if (i % 7 == 0) {
+        //             tag += "<td><font color='blue'>" + i + "</td>";
+        //             tag += "</tr>";
+        //             continue;
+        //         } else {
+        //             tag += "<td><font color='black'>" + i + "</td>";
+        //         }
+
+
+        //     }
+        // 
+
+        // tag += "</table>";
+
+        // document.getElementById("cal").innerHTML = tag;
+
+        // getCal(2014, 3);
+        document.getElementById("cal").innerHTML = getCal(2019,10);
+        console.log(document.getElementById("cal"))
+        function getCal(y, m) {
+
+            var monthDate = m - 1;
+            console.log("=============")
+            var l = new Date(y, (m - 1), 1);
+            var d = new Date(y, m, 0);
+
+            console.log(m + "월의 1일이 시작되는 위치: ", l.getDay());
+            console.log(m + "월의 마지막날:  ", d.getDate());
+            var tag = "<h3>" + y + "년" + m + "월</h3>";
+            tag += "<br><table border=1>";
+            tag += "<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>";
+            //해당 월의 1일부터 마지막날(30) <td>날짜</td>
+            tag += "<tr>";
+            var skipDay = 0;
+            for (; skipDay < l.getDay(); skipDay++) {
+                tag += "<td>" + "*" + "</td>";
+            }
+            for (var i = 1; i <= d.getDate(); i++) {
+                tag += "<td>" + i + "</td>";
+                if ((skipDay + i) % 7 == 0) {
+                    tag += "</tr><tr>";
+                }
+            }
+
+            tag += "</tr></table>";
+
+            // document.getElementById("cal").innerHTML = tag;
+        
+        return tag;
+        }
+        
+
+
+
+
+
+    </script>
+</body>
+
+</html>

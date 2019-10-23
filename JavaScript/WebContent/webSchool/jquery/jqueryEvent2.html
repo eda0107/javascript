@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        //하나의 요소에 여러가지 이벤트
+        //다른 이벤트를 ,를 사용하여 나열하기
+        $(document).ready(function () {
+            $("#p1").on("click", function () { //on을 통해 event와 function을 정의함 -> 간단하게 여러 개의 event 등록 가능
+                console.log("p1 clicked.")
+            })
+            $("#p1").on({
+                "mousedown" : function(){
+                    $("#show").html("MouseDown over p1")
+                          .css("backgroundColor", "red");
+                },
+                "mouseup" :function(){
+                    $("#show").html("MouseUp over p1")
+                          .css("backgroundColor", "green");
+                },
+                "mouseenter" : function(){
+                    $("#show").html("MouseEnter over p1")
+                          .css("backgroundColor", "yellow");
+                },
+                "mouseleave" : function(){
+                    $("#show").html("MouseLeave over p1")
+                          .css("backgroundColor", "purple");
+                }
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <p id="p1">This is paragraph</p><br><br><br>
+    <div id="show"></div>
+    <button id="btn1">Double</button>
+    <button id="btn2">Double</button>
+    <script>
+    $("#btn1").click(function(){ //btn1 버튼을 눌렀을 때, p1에 있는 click 이벤트를 실행하게 하세요
+        $("#p1").click();
+    })
+    $("#btn2").click(function(){ //
+        $("#p1").trigger("mousedown"); //trigger("이벤트이름"); btn2 버튼을 눌렀을 때 mousedown 이벤트를 강제로 호출하여 실행하세요
+    })
+    </script>
+    
+</body>
+
+</html>

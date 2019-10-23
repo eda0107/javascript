@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body id="bdy">
+
+    <h2>Table</h2>
+    <!-- <button onclick="loadXML()">생성</button> -->
+
+    <script>
+
+        // function loadXML() {
+            var xhtp = new XMLHttpRequest();
+            xhtp.onreadystatechange = function () {
+                if (xhtp.readyState == 4 && xhtp.status == 200) {
+                    // console.log(this.responseText);
+                    var obj = JSON.parse(this.responseText);
+                    console.log(obj);
+                    // console.log("name=>", obj.name);
+                    // console.log("age=>", obj.age);
+                    // console.log("pets=>", obj.pets[0].animal, obj.pets[0].name );
+
+
+                    var tabl = document.createElement("table")
+                    tabl.setAttribute("id", "tbl");
+                    tabl.setAttribute("border", 1);
+
+                    var th1 = document.createElement("th");
+                    var val1 = document.createTextNode("id");
+                    th1.appendChild(val1);
+
+                    var th2 = document.createElement("th");
+                    var val2 = document.createTextNode("first_name");
+                    th2.appendChild(val2);
+
+                    var th3 = document.createElement("th");
+                    var val3 = document.createTextNode("last_name");
+                    th3.appendChild(val3);
+
+                    var th4 = document.createElement("th");
+                    var val4 = document.createTextNode("email");
+                    th4.appendChild(val4);
+
+                    var th5 = document.createElement("th");
+                    var val5 = document.createTextNode("gender");
+                    th5.appendChild(val5);
+
+                    var th6 = document.createElement("th");
+                    var val6 = document.createTextNode("");
+                    th6.appendChild(val6);
+
+                    var tr = document.createElement("tr");
+                    tr.append(th1, th2, th3, th4, th5, th6);
+                    tabl.append(tr);
+
+
+                    for (var i = 0; i < obj.length; i++) {
+                        var tb1 = document.createElement("td");
+                        var val1 = document.createTextNode(obj[i].id);
+                        tb1.appendChild(val1);
+
+                        var tb2 = document.createElement("td");
+                        var val2 = document.createTextNode(obj[i].first_name);
+                        tb2.appendChild(val2);
+
+                        var tb3 = document.createElement("td");
+                        var val3 = document.createTextNode(obj[i].last_name);
+                        tb3.appendChild(val3);
+
+                        var tb4 = document.createElement("td");
+                        var val4 = document.createTextNode(obj[i].email);
+                        tb4.appendChild(val4);
+
+                        var tb5 = document.createElement("td");
+                        var val5 = document.createTextNode(obj[i].gender);
+                        tb5.appendChild(val5);
+
+                        var tb6 = document.createElement("td");
+                        var val6 = document.createTextNode(obj[i].ip_address);
+                        tb6.appendChild(val6);
+
+                        // var tb7 = document.createElement("button"); //한 행씩 지우는 버튼 만들기
+                        // var val7 = document.createTextNode("Del");
+                        // tb7.appendChild(val7);
+                        // tb7.addEventListener("click", delFunc);
+
+
+                        var tr1 = document.createElement("tr"); //tr에 td 추가하는 거
+                        tr1.append(tb1, tb2, tb3, tb4, tb5, tb6);
+
+                        // var rowId = i + 1; //tr에 id 주는 것(한 줄에 있는 항목 아무거나 눌러도 id값이 뜨게끔)
+                        // tb7.setAttribute("id", rowId);
+                        // tr1.setAttribute("id", "tr" + rowId);
+                        // console.log(tr1);
+                        // tr1.addEventListener("click", function (delFunc) {
+                        //     console.log(this.getAttribute("id"))
+                        // });
+
+
+                        
+                        tabl.append(tr1);
+
+                        document.getElementById("bdy").append(tabl);
+                    }
+
+                }
+            }
+
+            xhtp.open("get", "MOCK_DATA.json") //서버 연결을 요청(지정)
+            xhtp.send();
+        // }
+
+
+//  var table = document.createElement("table"); //다른 방법
+// table.setAttribute("border", 1);
+// for(var i=0; i<obj.length; i++) {
+//     var tr = document.createElement("tr");
+//     console.log(obj[i])
+//     for(field in obj[i]){
+//         var td =document.createElement("td");
+//         var val = document.createTextNode(obj[i][field]);
+//         td.appendChild(val);
+//         td.appendChild(td);
+//     }
+//     table.appendChild(tr)  
+// }
+
+
+
+    </script>
+</body>
+
+</html>

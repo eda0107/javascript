@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body id="bdy">
+
+    <button onclick="createTable()">Create Table</button><br>
+    FName: <input type="text" id="firstName" name="firstName"><br>
+    LName: <input type="text" id="lastName" name="lastName"><br>
+    Salary: <input type="text" id="salary" name="salary"><br>
+    <button id="btn">addRow</button>
+    <button id="del">deleteRow</button>
+
+    <script>
+
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", addDate);
+
+        function addDate() {
+
+            console.log("start");
+            var fName = document.getElementById("firstName").value;
+            var lName = document.getElementById("lastName").value;
+            var salary = document.getElementById("salary").value;
+
+
+            var td1 = document.createElement("td");
+            var tdVal1 = document.createTextNode(fName);
+            td1.appendChild(tdVal1);
+
+            var td2 = document.createElement("td");
+            var tdVal2 = document.createTextNode(lName);
+            td2.appendChild(tdVal2);
+
+            var td3 = document.createElement("td");
+            var tdVal3 = document.createTextNode(salary);
+            td3.appendChild(tdVal3);
+
+
+            var td4 = document.createElement("button");
+            var tdVal4 = document.createTextNode("Del");
+            td4.appendChild(tdVal4);
+            td4.addEventListener("click", delFunc); //click을 누르면 delFunc()이 호출 //delFunc대신 밑에 만들어놓은 delDate를 넣어도 삭제는 됨
+
+            var rows = document.getElementsByTagName("tr");
+            var rowId = rows.length;
+            td4.setAttribute("id", rowId);
+
+
+            var tr1 = document.createElement("tr"); //addRow 누르면 추가되는 것 변수가 tr1 ->태그 tr을 담은 것이 rows rows의 길이만큼 "tr"+id를 부여
+
+            tr1.setAttribute("id", "tr" + rowId);
+            tr1.append(td1, td2, td3, td4);
+            tr1.addEventListener("click", function (delFunc) { console.log(this.getAttribute("id")) }); //tr1의 id를 가져와라
+
+
+            tabl = document.getElementById("tbl");
+            tabl.append(tr1);
+
+
+
+        }
+
+
+        function createTable() {
+            var tabl = document.createElement("table");
+            // tabl.setAttribute({ "id": "tbl", "border": "1" }); //속성을 여러 개 주고 싶을 때 {: ,} 사용
+            tabl.setAttribute("id", "tbl");
+            tabl.setAttribute("border", 1);
+
+            var th1 = document.createElement("th");
+            var val1 = document.createTextNode("First Name");
+            th1.appendChild(val1);
+
+            var th2 = document.createElement("th");
+            var val2 = document.createTextNode("Last Name");
+            th2.appendChild(val2);
+
+            var th3 = document.createElement("th");
+            var val3 = document.createTextNode("Salary");
+            th3.appendChild(val3);
+
+            var tr = document.createElement("tr");
+            tr.append(th1, th2, th3);
+            tabl.append(tr);
+
+            document.getElementById("bdy").append(tabl);
+
+
+
+            var td1 = document.createElement("td");
+            var tdVal1 = document.createTextNode("Scott");
+            td1.appendChild(tdVal1);
+            var td2 = document.createElement("td");
+            var tdVal2 = document.createTextNode("Tiger");
+            td2.appendChild(tdVal2);
+            var td3 = document.createElement("td");
+            var tdVal3 = document.createTextNode("5000");
+            td3.appendChild(tdVal3);
+
+
+            var tr1 = document.createElement("tr");
+            tr1.append(td1, td2, td3);
+            tabl.append(tr1);
+
+            document.getElementById("bdy").append(tabl);
+
+
+
+        }
+
+        function delFunc() {
+            //this = button / button의 부모(아이디)가 출력: del 누르면 tr2, tr3, --- trn 값이 나옴
+            console.log(this.parentNode.getAttribute("id")); //항목을 삭제하기 위해서는 부모 노드를 삭제해야함 (-> 자식 노드들까지 같이 사라짐: remove())
+            var id = this.parentNode.getAttribute("id"); //this.parentNode = tr
+            var trId = document.getElementById(id);
+            console.log(trId);
+            trId.remove(); //this.parentNode.remove(); 해도 결과값이 나옴(console을 통해 구조를 확인하고 어떤 게 부모고 자식인지 알아보려고...)
+        }
+
+
+
+        var del = document.getElementById("del");
+        del.addEventListener("click", delDate);
+
+        function delDate() {
+            var tr1 = document.getElementsByTagName("tr");
+            var tab = document.getElementById("tbl");
+            tab.removeChild(tr1[2]);
+
+        }
+    </script>
+</body>
+
+</html>

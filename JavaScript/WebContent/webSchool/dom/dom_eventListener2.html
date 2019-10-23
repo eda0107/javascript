@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Java Script addEvent </h2>
+    <button id="btn">Click</button>
+    <p id="show"></p>
+    <script>
+        var x = document.getElementById("btn");
+        x.addEventListener("mouseover", mOver); //mouserover라고 하면 mOVer 버튼을 호출 (Click 버튼에 마우스를 갖다대면)
+        x.addEventListener("click", mClick); //click이라고 하면 mClick 버튼을 호출 (Click 버튼 마우스를 클릭하면)
+        x.addEventListener("mouseout", mOut); //(Click 버튼에서 마우스를 떼면)
+
+        function mOver() {
+            document.getElementById("show").innerHTML = "Mouse Over!";
+        }
+
+        function mClick() {
+            document.getElementById("show").innerHTML = "Mouse Click!";
+        }
+
+        function mOut() {
+            document.getElementById("show").innerHTML = "Mouse Out!";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <!--라이브러리 소스를 쓰겠다는 의미-->
+    <script>
+        $(document).ready(function () { //제이쿼리를 사용하겠고, 준비되었으면 실행하세요
+            // $("#btn1").click(function () { // $(선택자).ready(function(){});/선택자에 아이디 값? #id
+            //     $("h2").hide(); //숨기겠습니다-> hide() 보이겠습니다->show()
+            // })
+            // $("#btn2").click(function() {
+            //     $("h2").show();
+            // })
+            $("p").click(function () { //$("body *")": 바디 밑에 있는 태그들(자식, 자손) 전체적으로 없애겠습니다
+                console.log(this);
+                //$("*"):버튼 뿐만 아니라 공란을 눌러도 내용이 전체적으로 없어지기 때문에
+                // $("p:fisrt"): p태그의 첫번째 요소만 (last)
+                //$("p").eq(i)
+                // $("p.int"): p태그의 int 클래스만 쓰겠습니다 //int 클래스가 하나라면 앞에 p. h. 등의 태그를 쓰지 않아도 됨
+                // $(this).hide(); 
+                //this: 이벤트를 받는 요소(클릭당하는 애)
+            })
+        });
+
+    </script>
+</head>
+
+<body>
+    <h2>a Heading</h2>
+    <p class="int">a Paragraph</p>
+    <p>Anoter</p>
+    <button id="btn1">Click</button>
+    <button id="btn2">Click</button>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function(){
+                $("ul li:last-child").hide(); 
+                //ul li:first를 넣으면 list1의 coffee만 사라짐
+                //ul li:first-child를 넣으면 list1,2의 coffee가 둘 다 사라짐
+            })
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <button>Click</button>
+    <p>List 1:</p>
+    <ul>
+        <li>coffee</li>
+        <li>Milk</li>
+        <li>Tea</li>
+    </ul>
+
+    <p>List 2:</p>
+    <ul>
+        <li>coffee</li>
+        <li>Milk</li>
+        <li>Tea</li>
+    </ul>
+
+</body>
+
+</html>
