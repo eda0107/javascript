@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>insertEmployee</title>
+<script src="../jquery/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("input:button").on("click", function(){
+		var params = $("#frm").serialize(); //serialize-> 알아서 input 태그 안의 name값과 value값을 가져다 줌
+		console.log(params);
+		$.ajax({
+			url:"../../InsertEmpServ",
+			type:"post",
+			data: params, //params 값을 데이터로 넘기고
+			success: function(){
+				console.log("success");
+// 				location.href="listEmployee.html";
+			}
+		});
+	})
+})
+</script>
+</head>
+<body>
+<a href="listEmployee.html">리스트</a>
+<form id="frm" action="">
+fisrtName: <input type="text" name="firstName"><br>
+lastName: <input type="text" name="lastName"><br>
+Email: <input type="email" name="email"><br>
+HireDate: <input type="date" name="hireDate"><br>
+Job: <input type="text" name="jobId" value="IT_PROG"><br>
+Salary: <input type="text" name="salary"><br>
+<input type="button" value="입력"><br>
+
+
+</form>
+
+
+</body>
+</html>
